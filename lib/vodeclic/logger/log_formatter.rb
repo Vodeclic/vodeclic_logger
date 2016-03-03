@@ -6,7 +6,7 @@ module Vodeclic
     def call(severity, timestamp, progname, data)
       { 
         type: severity,
-        time: timestamp,
+        timestamp: timestamp,
         message: message(data)
       }.to_json.concat("\n")
     end
