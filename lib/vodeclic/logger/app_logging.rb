@@ -1,3 +1,5 @@
+require "lograge"
+
 module Vodeclic
   module AppLogging
     class << self
@@ -45,7 +47,7 @@ module Vodeclic
           yield(config, path)
         else
           logger = ::Logger.new(path)
-          logger.formatter = ::CbFormatter.new
+          logger.formatter = LogFormatter.new
           config.logger = ::ActiveSupport::TaggedLogging.new(logger)
           logger.level  = ::ActiveSupport::BufferedLogger.const_get(config.log_level.to_s.upcase)
           ::Rails.logger = config.logger
