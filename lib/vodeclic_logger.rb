@@ -1,1 +1,1 @@
-require "vodeclic/vodeclic_logger"
+require "vodeclic/logger"
