@@ -2,7 +2,45 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/vodeclic/logger`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+## Using
+###### Rails
+ To enable the vodeclic logger in your rails app, add this to you environement file (staging/production) : 
+ 
+  ```ruby
+    Vodeclic::AppLogging.config do|custom_logger|                                                                            
+      custom_logger.enabled = true 
+    end 
+  ```
+  
+###### Grape : 
+
+To use the vodeclic gem with Grape mount in a Rails app, add this to your app : 
+```ruby
+class ApiInstrumenter < Grape::Middleware::Base                                                                                                                              
+  def initialize(app)                                                                                                                                                        
+    @app = app                                                                                                                                                               
+  end                                                                                                                                                                        
+                                                                                                                                                                             
+  def call(env)                                                                                                                                                              
+    payload = {                             
+      remote_addr:    env['REMOTE_ADDR'],                                                                                    
+      request_method: env['REQUEST_METHOD'],    
+      request_path:   env['PATH_INFO'],                                                                                     
+      request_query:  env['QUERY_STRING'],                                
+    }                                                                                                                                                                 
+    ActiveSupport::Notifications.instrument "request.api", payload do                                                                                                        
+      @app.call(env).tap do |(status, headers, response)|                                                                    
+        payload[:params] = env["api.endpoint"].params.to_hash                                                                
+        payload[:params].delete("route_info")          
+        payload[:params].delete("format")               
+        payload[:response_status] = status                                                                                
+        payload[:headers_size] = headers.sum {|_, v| v.to_s.bytesize }
+        payload[:body_size]    = headers['Content-Length']                                                                  
+      end                                        
+    end                                      
+  end                                         
+end
+```
 
 ## Installation
 
@@ -11,6 +49,8 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'vodeclic-logger'
 ```
+
+
 
 And then execute:
 
