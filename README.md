@@ -2,7 +2,25 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/vodeclic/logger`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-## Using
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'vodeclic-logger'
+```
+
+
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install vodeclic-logger
+
+## Usage
 ###### Rails
  To enable the vodeclic logger in your rails app, add this to you environement file (staging/production) : 
  
@@ -42,27 +60,6 @@ class ApiInstrumenter < Grape::Middleware::Base
 end
 ```
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'vodeclic-logger'
-```
-
-
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install vodeclic-logger
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
