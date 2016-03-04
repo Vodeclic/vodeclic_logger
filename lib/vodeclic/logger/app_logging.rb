@@ -1,5 +1,4 @@
 require "lograge"
-
 module Vodeclic
   module AppLogging
     class << self
