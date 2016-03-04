@@ -1,6 +1,6 @@
 require "lograge"
 module Vodeclic
-  class GrapeLoggerSubscriber < ::Lograge::RequestLogSubscriber
+  class GrapeLogSubscriber < ::Lograge::RequestLogSubscriber
     def request(event)
       return if ::Lograge.ignore?(event)
       payload = event.payload
