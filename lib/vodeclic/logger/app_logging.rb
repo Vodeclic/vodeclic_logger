@@ -30,6 +30,7 @@ module Vodeclic
             parent_request_service: payload["Parent-Request-Service"],
             parent_request_controller: payload["Parent-Request-Controller"],
             parent_request_method: payload["Parent-Request-Method"],
+            session: payload[:session]
           }
         end
         init_rails_logger(config) 

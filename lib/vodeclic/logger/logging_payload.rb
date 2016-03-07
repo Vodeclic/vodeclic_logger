@@ -13,6 +13,7 @@ module Vodeclic
         payload[:parent_request_service] = headers["Parent-Request-Service"] unless headers["Parent-Request-Service"].nil?
         payload[:parent_request_controller] = headers["Parent-Request-Controller"] unless headers["Parent-Request-Controller"].nil?
         payload[:parent_request_method] = headers["Parent-Request-Method"] unless headers["Parent-Request-Method"].nil?
+        payload[:session] = request.session
       end
     end
 
