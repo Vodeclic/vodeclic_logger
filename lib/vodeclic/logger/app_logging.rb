@@ -26,7 +26,7 @@ module Vodeclic
           { 
             params: params,
             request_uuid: payload[:request_uuid],
-            parent_request: payload["Parent-Request"],
+            parent_request: payload[:parent_request],
             session: payload[:session]
           }
         end
