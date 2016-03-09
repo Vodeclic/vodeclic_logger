@@ -26,6 +26,7 @@ module Vodeclic
           { 
             params: params,
             request_uuid: payload[:request_uuid],
+            remote_ip: payload[:remote_ip],
             parent_request: payload[:parent_request],
             session: payload[:session]
           }

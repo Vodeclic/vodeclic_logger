@@ -9,6 +9,7 @@ module Vodeclic
         super
         headers = request.headers
         payload[:request_uuid] = request.uuid
+        payload[:remote_ip] = request.remote_ip
         payload[:parent_request] = logging_parent_request(headers)
         payload[:session] = request.session
       end
