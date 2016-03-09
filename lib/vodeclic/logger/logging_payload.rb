@@ -9,8 +9,13 @@ module Vodeclic
         super
         headers = request.headers
         payload[:request_uuid] = request.uuid
-        payload[:parent_request] = headers["Parent-Request"] || {}
+        payload[:parent_request] = logging_parent_request(headers)
         payload[:session] = request.session
+      end
+
+      def logging_parent_request(headers)
+        return {} unless headers["Parent-Request"]
+        JSON.parse(headers["Parent-Request"]) rescue {}
       end
     end
 
