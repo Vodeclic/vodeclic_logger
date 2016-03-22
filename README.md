@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 ###### Rails
- To enable the vodeclic logger in your rails app, add this to you environement file (staging/production) : 
+ To enable the vodeclic logger in your rails app, add this to you environment file (staging/production) : 
  
   ```ruby
     Vodeclic::AppLogging.config do|custom_logger|                                                                            
@@ -32,7 +32,7 @@ Or install it yourself as:
   
 ###### Grape : 
 
-To use the vodeclic gem with Grape mount in a Rails app, add this to your app : 
+To use the vodeclic gem with Grape mounted in a Rails app, add this to your app : 
 ```ruby
 class ApiInstrumenter < Grape::Middleware::Base                                                                                                                              
   def initialize(app)                                                                                                                                                        
@@ -71,4 +71,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/vodeclic-logger.
 
-# vodeclic_logger
